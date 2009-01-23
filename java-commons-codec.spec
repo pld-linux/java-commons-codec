@@ -47,7 +47,9 @@ Dokumentacja javadoc dla pakietu %{name}.
 %prep
 %setup -qc
 touch LICENSE
+
 cd commons-codec-%{version}
+%{__sed} -i -e 's,\r$,,' build.xml
 
 # FIXME Remove SoundexTest which is failing
 # and thus preventing the build to proceed.
