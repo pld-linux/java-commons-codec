@@ -18,6 +18,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	junit
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	sed >= 4.0
 Provides:	commons-codec
 Obsoletes:	commons-codec
 Obsoletes:	jakarta-commons-codec
