@@ -1,14 +1,14 @@
 # TODO
 # - rename to apache-commons-codec?
 %include	/usr/lib/rpm/macros.java
-Summary:	Jakarta Commons Codec Package
-Summary(pl.UTF-8):	Pakiet Jakarta Commons Codec
-Name:		jakarta-commons-codec
+Summary:	Commons Codec Package
+Summary(pl.UTF-8):	Pakiet Commons Codec
+Name:		java-commons-codec
 Version:	1.3
 Release:	4
-License:	Apache Software License
+License:	Apache
 Group:		Development/Languages/Java
-Source0:	http://apache.zone-h.org/commons/codec/source/commons-codec-%{version}-src.tar.gz
+Source0:	http://www.apache.org/dist/commons/codec/source/commons-codec-%{version}-src.tar.gz
 # Source0-md5:	af3c3acf618de6108d65fcdc92b492e1
 Patch0:		%{name}-buildscript.patch
 URL:		http://commons.apache.org/codec/
@@ -20,6 +20,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	commons-codec
 Obsoletes:	commons-codec
+Obsoletes:	jakarta-commons-codec
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
