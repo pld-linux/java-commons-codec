@@ -1,5 +1,3 @@
-# TODO
-# - rename to apache-commons-codec?
 %include	/usr/lib/rpm/macros.java
 Summary:	Commons Codec Package
 Summary(pl.UTF-8):	Pakiet Commons Codec
@@ -7,7 +5,7 @@ Name:		java-commons-codec
 Version:	1.3
 Release:	4
 License:	Apache
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/commons/codec/source/commons-codec-%{version}-src.tar.gz
 # Source0-md5:	af3c3acf618de6108d65fcdc92b492e1
 Patch0:		%{name}-buildscript.patch
@@ -63,7 +61,8 @@ cd commons-codec-%{version}
 export LC_ALL=en_US # source not in ASCII
 
 required_jars="junit"
-export CLASSPATH=$(build-classpath $required_jars)
+CLASSPATH=$(build-classpath $required_jars)
+export CLASSPATH
 
 %ant dist
 
