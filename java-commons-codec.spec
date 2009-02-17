@@ -1,9 +1,10 @@
 %include	/usr/lib/rpm/macros.java
+%define		srcname	commons-codec
 Summary:	Commons Codec Package
 Summary(pl.UTF-8):	Pakiet Commons Codec
 Name:		java-commons-codec
 Version:	1.3
-Release:	4
+Release:	5
 License:	Apache
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/commons/codec/source/commons-codec-%{version}-src.tar.gz
@@ -12,6 +13,7 @@ Patch0:		%{name}-buildscript.patch
 URL:		http://commons.apache.org/codec/
 BuildRequires:	ant >= 1.6.2
 BuildRequires:	ant-junit
+BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	junit
 BuildRequires:	rpm-javaprov
@@ -63,8 +65,9 @@ export LC_ALL=en_US # source not in ASCII
 required_jars="junit"
 CLASSPATH=$(build-classpath $required_jars)
 export CLASSPATH
+export SHELL=/bin/sh
 
-%ant dist
+%ant -Dbuild.compiler=extJavac dist
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -72,19 +75,19 @@ cd commons-codec-%{version}
 
 # jars
 install -d $RPM_BUILD_ROOT%{_javadir}
-cp -a dist/commons-codec-%{version}.jar $RPM_BUILD_ROOT%{_javadir}
-ln -s commons-codec-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/commons-codec.jar
+cp -a dist/%{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}
+ln -s %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
 
 # javadoc
-install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-cp -a dist/docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a dist/docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
@@ -93,5 +96,5 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
