@@ -1,10 +1,10 @@
-%include	/usr/lib/rpm/macros.java
 %define		srcname	commons-codec
+%include	/usr/lib/rpm/macros.java
 Summary:	Commons Codec Package
 Summary(pl.UTF-8):	Pakiet Commons Codec
 Name:		java-commons-codec
 Version:	1.3
-Release:	6
+Release:	7
 License:	Apache
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/commons/codec/source/commons-codec-%{version}-src.tar.gz
@@ -13,13 +13,12 @@ Patch0:		%{name}-buildscript.patch
 URL:		http://commons.apache.org/codec/
 BuildRequires:	ant >= 1.6.2
 BuildRequires:	ant-junit
-BuildRequires:	jpackage-utils
 BuildRequires:	java-junit
+BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.556
 BuildRequires:	sed >= 4.0
 %buildrequires_jdk
-Provides:	commons-codec
 Obsoletes:	commons-codec
 Obsoletes:	jakarta-commons-codec
 BuildArch:	noarch
