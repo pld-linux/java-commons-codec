@@ -1,5 +1,4 @@
 %define		srcname	commons-codec
-%include	/usr/lib/rpm/macros.java
 Summary:	Commons Codec Package
 Summary(pl.UTF-8):	Pakiet Commons Codec
 Name:		java-commons-codec
